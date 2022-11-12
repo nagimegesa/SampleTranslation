@@ -37,9 +37,6 @@ int main(int argc, char *argv[])
     QFile qss_file(":/qss/main.qss");
 
     qss_file.open(QIODevice::ReadOnly);
-    if(!qss_file.isOpen()) {
-          qDebug() << "open style failed";
-    }
     QString style = qss_file.readAll();
     qApp->setStyleSheet(style);
     qss_file.close();
