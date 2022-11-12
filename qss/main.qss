@@ -1,0 +1,19 @@
+QPushButton {
+    color:rgb(69, 34, 52);
+    font-size:15px;
+    background-color:rgba(202, 139, 179, 0.4);
+}
+
+Dialog {
+    background-image:url(:/image/background.jpg);
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+QLineEdit {
+    padding-left:5px;
+    padding-right:5px;
+    border: 2px solid black;
+    border-radius:10px;
+    text-align:center;
+}
