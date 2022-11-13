@@ -17,7 +17,7 @@ class Dialog : public QDialog
 public:
 
     Dialog(QString app_id, QString app_key, QWidget* parent = nullptr);
-    virtual void paintEvent(QPaintEvent*);
+    virtual void keyPressEvent(QKeyEvent* e) override;
     ~Dialog();
 
 private:

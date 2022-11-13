@@ -8,6 +8,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QPixmap>
+#include <QKeyEvent>
 
 QByteArray getMd5(QString s);
 Dialog::Dialog(QWidget *parent)
@@ -18,6 +19,7 @@ Dialog::Dialog(QWidget *parent)
     Qt::WindowFlags flag = Qt::Dialog;
     flag |= Qt::WindowMinimizeButtonHint;
     flag |= Qt::WindowCloseButtonHint;
+    flag |= Qt::WindowStaysOnTopHint;
     setWindowFlags(flag);
     this->setFixedSize(this->width(), this->height());
     connect(ui->change_button, &QPushButton::pressed, this, &Dialog::change_translation);
@@ -27,6 +29,7 @@ Dialog::Dialog(QWidget *parent)
 
     ui->from_edit->setAlignment(Qt::AlignHCenter);
     ui->to_edit->setAlignment(Qt::AlignHCenter);
+    ui->to_edit->setReadOnly(true);
 }
 
 Dialog::Dialog(QString app_id, QString app_key, QWidget *parent)
@@ -82,11 +85,9 @@ void Dialog::show_error_code(const QJsonObject& obj) {
     QMessageBox::critical(this, "错误", error_code + "\n" + error_message, QMessageBox::Cancel);
 }
 
-void Dialog::paintEvent(QPaintEvent* ) {
-//    QPixmap map(":/image/aili.png");
-//    map.scaled(this->size());
-//    QPainter painter(this);
-//    painter.drawPixmap(this->rect(), map);
+void Dialog::keyPressEvent(QKeyEvent* e) {
+    if(e->key() == Qt::Key_Escape) return;
+    QDialog::keyPressEvent(e);
 }
 
 QByteArray getMd5(QString s) {

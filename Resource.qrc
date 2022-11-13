@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>image/transfrom.png</file>
         <file>qss/main.qss</file>
         <file>image/background.jpg</file>
     </qresource>
